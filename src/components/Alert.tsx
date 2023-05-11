@@ -1,11 +1,29 @@
-import React, { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 interface Props {
   children: ReactNode;
+  //Notifica al padre que se esconde
+  onClose: () => void;
 }
+
 //rafce para hacerlo automatico
-const Alert = ({ children }: Props) => {
-  return <div className="alert alert-primary">{children}</div>;
+const Alert = ({ children, onClose }: Props) => {
+  return (
+    <>
+      <div className={"alert alert-primary alert-dismissible "}>
+        <strong>Holy guacamole!</strong> You should check in on some of those
+        fields below.
+        <button
+          onClick={() => {
+            onClose();
+          }}
+          //onClick={onClose}
+          className="btn-close"
+          data-dismiss="alert"
+        ></button>
+      </div>
+    </>
+  );
 };
 
 export default Alert;

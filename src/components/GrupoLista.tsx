@@ -2,12 +2,14 @@ import { MouseEvent } from "react";
 import { useState } from "react";
 
 //PROPS: Sirve para pasar info por parámetro a un componente
-//INMUTABLE
+//INMUTABLE - no se modifican, no son buenas practicas
 interface Props {
+  //Properties, son los inputs de los compònentes
   items: string[];
   heading: string;
   //Las funciones son como el paso por referencia
   onSelectItem: (item: string) => void;
+  //parametros => return
 }
 
 //STATE: datos locales del componente
@@ -15,7 +17,12 @@ interface Props {
 
 function GrupoLista({ items, heading, onSelectItem }: Props) {
   // props = [];
+  //useState sirve para decirle a react que las variables cambian con el tiempo
+  //selectedIndex es la variable
+  //setSelectedIndex funcion que actualiza la variable
+  //hay que pensar en componentes con estados y react se encarga de mostarlos cuando se actualiza su estado
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  //const [string, setString] = useState('');
 
   //Se puede hacer de dos maneras, las funciones pueden además tener parámetros
   //Si no hay param --> const
