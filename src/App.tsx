@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Alert from "./components/Alert";
 import Boton from "./components/Boton";
-import GrupoLista from "./components/GrupoLista";
+import Navbar from "./components/Navbar";
+import Welcome from "./components/Welcome";
 
 function App() {
   let oasis = ["Some Might Say", "Acquiesce", "Live Forever", "Slide Away"];
@@ -19,6 +20,8 @@ function App() {
 
   return (
     <>
+      <Welcome></Welcome>
+      <Navbar></Navbar>
       {showAlert && (
         <Alert
           onClose={() => {
@@ -40,4 +43,7 @@ function App() {
   //Control-d
 }
 
+//document.body.style.backgroundColor = "lightblue";
+document.body.style.backgroundImage =
+  "url(https://pacharanelpurriego.com/wp-content/uploads/2019/09/Valle-del-Nansa.jpg)";
 export default App;
