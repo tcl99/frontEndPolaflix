@@ -7,19 +7,25 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="inicio">
-                Inicio
-              </a>
+              <strong>
+                <a className="nav-link" aria-current="page" href="/">
+                  Inicio
+                </a>
+              </strong>
             </li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="series">
-                Agregar Serie
-              </a>
+              <strong>
+                <a className="nav-link" aria-current="page" href="series">
+                  Agregar Serie
+                </a>
+              </strong>
             </li>
             <li className="nav-item">
-              <a className="nav-link" aria-current="page" href="facturas">
-                Ver Cargos
-              </a>
+              <strong>
+                <a className="nav-link" aria-current="page" href="facturas">
+                  Ver Cargos
+                </a>
+              </strong>
             </li>
           </ul>
           <form className="d-flex" role="search">
