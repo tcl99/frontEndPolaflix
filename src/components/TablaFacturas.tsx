@@ -1,34 +1,38 @@
-const TablaFacturas = () => {
+interface Importe {
+  fecha: string;
+  serie: string;
+  episodio: string;
+  precio: string;
+}
+
+interface Props {
+  importes?: Importe[];
+}
+
+const TablaFacturas = ({ importes }: Props) => {
   return (
     <>
-      <table className="table table-striped table-dark">
+      <table
+        className="table table-striped table-dark"
+        style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}
+      >
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Serie</th>
+            <th scope="col">Episodio</th>
+            <th scope="col">Precio</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {importes?.map(({ fecha, serie, episodio, precio }, index) => (
+            <tr key={index}>
+              <th>{fecha}</th>
+              <td>{serie}</td>
+              <td>{episodio}</td>
+              <td>{precio}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>

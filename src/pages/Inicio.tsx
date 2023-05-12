@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import SeriesInicio from "../components/SeriesInicio";
-import Navbar from "../components/Navbar";
-import Welcome from "../components/Welcome";
 import Boton from "../components/Boton";
 import Alert from "../components/Alert";
-import { Outlet } from "react-router-dom";
 
 const Inicio = () => {
   let oasis = ["Some Might Say", "Acquiesce", "Live Forever", "Slide Away"];

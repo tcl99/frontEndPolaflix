@@ -10,9 +10,11 @@ interface Props {
 const Alert = ({ children, onClose }: Props) => {
   return (
     <>
-      <div className={"alert alert-primary alert-dismissible "}>
-        <strong>Holy guacamole!</strong> You should check in on some of those
-        fields below.
+      <div
+        className={"alert alert-secondary alert-dismissible animate show"}
+        style={{ width: "50%" }}
+      >
+        {children}
         <button
           onClick={() => {
             onClose();
