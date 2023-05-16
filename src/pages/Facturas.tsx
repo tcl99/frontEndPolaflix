@@ -1,20 +1,18 @@
+import { useEffect, useState } from "react";
 import TablaFacturas from "../components/TablaFacturas";
+import { FacturasAPI } from "../api/Cliente";
+import { getFacturas } from "../api/getFacturas";
 
 const Facturas = () => {
-  const importes = [
-    {
-      fecha: "2023-05-13",
-      serie: "S01",
-      episodio: "E01",
-      precio: "10.00",
-    },
-    {
-      fecha: "2023-05-14",
-      serie: "S01",
-      episodio: "E02",
-      precio: "15.00",
-    },
-  ];
+  const [facturas, setFacturas] = useState<FacturasAPI>();
+
+  useEffect(() => {
+    // You can implement a <Loading/>
+    //  start loading
+    console.log("Loading");
+    getFacturas().then((data) => setFacturas(data));
+    //  finish loading
+  }, []);
 
   return (
     <>
@@ -33,7 +31,7 @@ const Facturas = () => {
           </a>
         </li>
       </ul>
-      <TablaFacturas importes={importes}></TablaFacturas>
+      <TablaFacturas importes={facturas?.importes}></TablaFacturas>
     </>
   );
 };

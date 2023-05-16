@@ -1,15 +1,6 @@
-interface Importe {
-  fecha: string;
-  serie: string;
-  episodio: string;
-  precio: string;
-}
+import { FacturasAPI } from "../api/Cliente";
 
-interface Props {
-  importes?: Importe[];
-}
-
-const TablaFacturas = ({ importes }: Props) => {
+const TablaFacturas = ({ importes }: FacturasAPI) => {
   return (
     <>
       <table
