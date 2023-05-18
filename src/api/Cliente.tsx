@@ -1,23 +1,22 @@
 import axios from "axios";
 
-let data = "socio";
-
 export const client = axios.create({
   baseURL: "http://localhost:8080",
   headers: {
-    "Content-Type": "*",
-    "Access-Control-Allow-Origin": "*",
+    "Content-Type": "application/json",
   },
-  data: data,
 });
 
 export interface FacturasAPI {
+  fecha?: string;
+  importeMensual?: number;
   importes?: Importe[];
 }
 
 interface Importe {
-  fecha: string;
-  serie: string;
-  episodio: number;
-  precio: number;
+  cargo: number;
+  fechaVisualizacion: string;
+  nCapitulo: number;
+  nTemporada: number;
+  nombreSerie: string;
 }

@@ -1,6 +1,6 @@
 import { FacturasAPI } from "../api/Cliente";
 
-const TablaFacturas = ({ importes }: FacturasAPI) => {
+const TablaFacturas = ({ importes, importeMensual }: FacturasAPI) => {
   return (
     <>
       <table
@@ -16,16 +16,37 @@ const TablaFacturas = ({ importes }: FacturasAPI) => {
           </tr>
         </thead>
         <tbody>
-          {importes?.map(({ fecha, serie, episodio, precio }, index) => (
-            <tr key={index}>
-              <th>{fecha}</th>
-              <td>{serie}</td>
-              <td>{episodio}</td>
-              <td>{precio}</td>
+          {importes ? (
+            importes?.map(
+              (
+                {
+                  cargo,
+                  fechaVisualizacion,
+                  nCapitulo,
+                  nTemporada,
+                  nombreSerie,
+                },
+                index
+              ) => (
+                <tr key={index}>
+                  <th>{fechaVisualizacion}</th>
+                  <td>{nombreSerie}</td>
+                  <td>{nTemporada + "x" + nCapitulo}</td>
+                  <td>{cargo}</td>
+                </tr>
+              )
+            )
+          ) : (
+            <tr>
+              <th>No hay importes en este mes</th>
+              <td></td>
+              <td></td>
+              <td></td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
+      <h3>Importe total: {importeMensual ? importeMensual : 0}</h3>
     </>
   );
 };
