@@ -12,11 +12,9 @@ const Facturas = () => {
   );
 
   useEffect(() => {
-    // You can implement a <Loading/>
-    //  start loading
+    // <Loading/>
     console.log("Loading");
     getFacturas({ fecha }).then((data) => setFactura(data));
-    //  finish loading
   }, [fecha]);
 
   const retrocederMes = () => {
@@ -38,7 +36,7 @@ const Facturas = () => {
           </a>
         </li>
         <li className="nav-item">
-          <h1>MES</h1>
+          <h1>Fecha {fecha.toString()}</h1>
         </li>
         <li className="nav-link">
           <a href="#" aria-label="Next" onClick={avanzarMes}>
@@ -50,7 +48,6 @@ const Facturas = () => {
         importes={factura?.importes}
         importeMensual={factura?.importeMensual}
       ></TablaFacturas>
-      <div>Fecha {fecha.toString()}</div>
     </>
   );
 };

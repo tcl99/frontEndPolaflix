@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SeriesInicio from "../components/SeriesInicio";
 import Boton from "../components/Boton";
 import Alert from "../components/Alert";
+import { InfoSeriesAPI } from "../api/Cliente";
+import { getInfoSeries } from "../api/getInfoSeries";
 
 const Inicio = () => {
-  let oasis = ["Some Might Say", "Acquiesce", "Live Forever", "Slide Away"];
-  let f1 = ["Aston", "Ferrari", "Mercedes", "Williams", "McLaren"];
-
   const [showAlert, setShowAlert] = useState(false);
+  const [series, setSeries] = useState<InfoSeriesAPI[][]>();
 
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
-
-  const handleOnButtonCliked = () => {
-    console.log("Buenas");
-  };
+  useEffect(() => {
+    // <Loading/>
+    console.log("Loading");
+    getInfoSeries().then((data) => setSeries(data));
+    console.log(series?.at(1));
+  }, []);
 
   return (
     <>
-      <SeriesInicio items={oasis}>Empezadas</SeriesInicio>
-      <SeriesInicio items={oasis}>Pendientes</SeriesInicio>
-      <SeriesInicio items={oasis}>Terminadas</SeriesInicio>
+      <SeriesInicio series={series?.at(0)}>Empezadas</SeriesInicio>
+      <SeriesInicio series={series?.at(1)}>Pendientes</SeriesInicio>
+      <SeriesInicio series={series?.at(2)}>Terminadas</SeriesInicio>
       <Boton
         onClick={() => {
           setShowAlert(true);

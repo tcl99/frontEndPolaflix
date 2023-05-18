@@ -1,10 +1,11 @@
-import { ReactNode } from "react";
+import { InfoSeriesAPI } from "../api/Cliente";
 
 interface Props {
-  items: string[];
-  children: ReactNode;
+  series?: InfoSeriesAPI[];
+  children: string;
 }
-const SeriesInicio = ({ children, items }: Props) => {
+
+const SeriesInicio = ({ series, children }: Props) => {
   return (
     <>
       <div
@@ -13,11 +14,15 @@ const SeriesInicio = ({ children, items }: Props) => {
       >
         <div className="card-header">{children}</div>
         <ul className="list-group list-group-flush">
-          {items.map((item, index) => (
-            <li key={index} className="list-group-item">
-              {item}
-            </li>
-          ))}
+          {series?.length ? (
+            series.map((item, index) => (
+              <li key={index} className="list-group-item">
+                {item.titulo}
+              </li>
+            ))
+          ) : (
+            <li className="list-group-item">No hay series</li>
+          )}
         </ul>
       </div>
     </>
