@@ -1,7 +1,7 @@
-import { InfoSeriesAPI } from "../api/Cliente";
+import { SeriesAPI } from "../api/Cliente";
 
 interface Props {
-  series?: InfoSeriesAPI[];
+  series?: SeriesAPI[];
   children: string;
 }
 
@@ -9,7 +9,7 @@ const SeriesInicio = ({ series, children }: Props) => {
   return (
     <>
       <div
-        className="card"
+        className="card scrollspy-example"
         style={{ width: "95%", margin: 10, marginLeft: 20 }}
       >
         <div className="card-header">{children}</div>
@@ -17,7 +17,7 @@ const SeriesInicio = ({ series, children }: Props) => {
           {series?.length ? (
             series.map((item, index) => (
               <li key={index} className="list-group-item">
-                {item.titulo}
+                {item.info.titulo}
               </li>
             ))
           ) : (
