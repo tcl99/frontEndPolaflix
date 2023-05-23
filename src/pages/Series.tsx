@@ -1,9 +1,11 @@
-import Welcome from "../components/Welcome";
-import Navbar from "../components/Navbar";
 import InfoSerie from "../components/InfoSerie";
+import { SeriesAPI } from "../api/SeriesAPI";
+import { useEffect, useState } from "react";
+import { getSeries } from "../api/getCatalogo";
+import { putAnadirSerie } from "../api/putAnadirSerie";
 
 const Series = () => {
-  const items = [
+  const letras = [
     "A",
     "B",
     "C",
@@ -33,13 +35,38 @@ const Series = () => {
     "0-9",
   ];
 
+  const [series, setSeries] = useState<SeriesAPI[]>();
+  const [anadirSerie, setAnadirSerie] = useState<SeriesAPI>();
+
+  const handleSelectSerie = (s: SeriesAPI) => {
+    setAnadirSerie(s);
+  };
+
+  //Para devolver el catalogo
+  useEffect(() => {
+    // <Loading/>
+    console.log("Loading");
+    getSeries().then((data) => setSeries(data));
+  }, []);
+
+  //Para comprobar la serie a anadir y hacer el put
+  useEffect(() => {
+    // <Loading/>
+    console.log(anadirSerie?.info.descripcion);
+    anadirSerie
+      ? putAnadirSerie(anadirSerie).then(() => {
+          console.log("Serie añadida");
+        })
+      : console.log("No añadida");
+  }, [anadirSerie]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              {items.map((item, index) => (
+              {letras.map((item, index) => (
                 <strong key={index}>
                   <a
                     className="list-group-item nav-link"
@@ -65,9 +92,13 @@ const Series = () => {
           </div>
         </div>
       </nav>
-
-      <InfoSerie titulo="Dick" descripcion="nononono"></InfoSerie>
-      <InfoSerie titulo="Dick 2" descripcion="si"></InfoSerie>
+      {series?.map((s, index) => (
+        <InfoSerie
+          key={index}
+          serie={s}
+          onSelectSerie={handleSelectSerie}
+        ></InfoSerie>
+      ))}
     </>
   );
 };

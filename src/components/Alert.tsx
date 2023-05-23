@@ -11,8 +11,8 @@ const Alert = ({ children, onClose }: Props) => {
   return (
     <>
       <div
-        className={"alert alert-secondary alert-dismissible animate show"}
-        style={{ width: "50%" }}
+        className={"alert alert-info alert-dismissible animate show"}
+        style={{ display: "inline-flex" }}
       >
         {children}
         <button

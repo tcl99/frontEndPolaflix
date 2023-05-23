@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Alert from "./Alert";
+import { SeriesAPI } from "../api/SeriesAPI";
 
 interface Props {
-  titulo: string;
-  descripcion?: string;
+  serie: SeriesAPI;
+  onSelectSerie: (item: SeriesAPI) => void;
 }
 
-const InfoSerie = ({ titulo, descripcion }: Props) => {
-  const [showAlert, setShowAlert] = useState(false);
+const InfoSerie = ({ serie, onSelectSerie }: Props) => {
+  const [showDescripcion, setShowDescripcion] = useState(false);
 
   return (
     <>
@@ -18,22 +19,37 @@ const InfoSerie = ({ titulo, descripcion }: Props) => {
         }}
       >
         <h3
+          style={{ cursor: "pointer" }}
+          className="pe-auto col-auto "
+          onClick={() => {
+            //Muestra o cierra la info de la serie con el nombre
+            console.log(serie);
+            !showDescripcion
+              ? setShowDescripcion(true)
+              : setShowDescripcion(false);
+          }}
+        >
+          {serie.info.titulo}
+        </h3>
+        <a
+          style={{ cursor: "pointer" }}
           className="col-auto"
           onClick={() => {
-            setShowAlert(true);
+            //Devuelve la serie
+            onSelectSerie(serie);
           }}
         >
-          {titulo}
-        </h3>
-        <a className="col-auto"> Agregar Serie</a>
+          Agregar Serie
+        </a>
       </div>
-      {showAlert && (
+      {showDescripcion && (
         <Alert
           onClose={() => {
-            setShowAlert(false);
+            //Cierra la descripcion
+            setShowDescripcion(false);
           }}
         >
-          {descripcion}
+          {serie.info.descripcion}
         </Alert>
       )}
     </>

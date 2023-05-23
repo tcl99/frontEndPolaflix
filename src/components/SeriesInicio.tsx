@@ -1,4 +1,4 @@
-import { SeriesAPI } from "../api/Cliente";
+import { SeriesAPI } from "../api/SeriesAPI";
 
 interface Props {
   series?: SeriesAPI[];
@@ -9,11 +9,18 @@ const SeriesInicio = ({ series, children }: Props) => {
   return (
     <>
       <div
-        className="card scrollspy-example"
-        style={{ width: "95%", margin: 10, marginLeft: 20 }}
+        className="card"
+        style={{
+          width: "95%",
+          margin: 10,
+          marginLeft: 20,
+        }}
       >
         <div className="card-header">{children}</div>
-        <ul className="list-group list-group-flush">
+        <ul
+          className="list-group list-group-flush"
+          // style={{ overflowY: "scroll" }}
+        >
           {series?.length ? (
             series.map((item, index) => (
               <li key={index} className="list-group-item">
@@ -21,7 +28,9 @@ const SeriesInicio = ({ series, children }: Props) => {
               </li>
             ))
           ) : (
-            <li className="list-group-item">No hay series</li>
+            <li className="list-group-item">
+              <em>No hay series</em>
+            </li>
           )}
         </ul>
       </div>
