@@ -1,9 +1,3 @@
-import { useState } from "react";
-import Alert from "./components/Alert";
-import Boton from "./components/Boton";
-import Navbar from "./components/Navbar";
-import Welcome from "./components/Welcome";
-import SeriesInicio from "./components/SeriesInicio";
 import Inicio from "./pages/Inicio";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Series from "./pages/Series";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import TablaFacturas from "../components/TablaFacturas";
-import { FacturasAPI } from "../api/Cliente";
-import { getFacturas } from "../api/getFacturas";
+import { FacturasAPI } from "../api/FacturasAPI";
+import { getFacturas } from "../api/getFacturasUsuario";
 import { format, parseISO } from "date-fns";
 import { YearMonth } from "js-joda";
 
@@ -44,6 +44,14 @@ const Facturas = () => {
           </a>
         </li>
       </ul>
+
+      <input
+        className="justify-content-center"
+        type="month"
+        id="fecha"
+        name="fecha"
+      ></input>
+
       <TablaFacturas
         importes={factura?.importes}
         importeMensual={factura?.importeMensual}

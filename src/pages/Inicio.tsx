@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import SeriesInicio from "../components/SeriesInicio";
 import Boton from "../components/Boton";
 import Alert from "../components/Alert";
-import { SeriesAPI } from "../api/Cliente";
-import { getInfoSeries } from "../api/getSeries";
+import { SeriesAPI } from "../api/SeriesAPI";
+import { getInfoSeries } from "../api/getSeriesUsuario";
 
 const Inicio = () => {
   const [showAlert, setShowAlert] = useState(false);

@@ -1,5 +1,6 @@
 import { YearMonth } from "js-joda";
-import { FacturasAPI, client } from "./Cliente";
+import { client } from "./Cliente";
+import { FacturasAPI } from "./FacturasAPI";
 
 interface Props {
   fecha: YearMonth;
