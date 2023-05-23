@@ -3,6 +3,8 @@ import { SeriesAPI } from "../api/SeriesAPI";
 import { useEffect, useState } from "react";
 import { getSeries } from "../api/getCatalogo";
 import { putAnadirSerie } from "../api/putAnadirSerie";
+import { Outlet, Route } from "react-router-dom";
+import Serie from "./Serie";
 
 const Series = () => {
   const letras = [
@@ -39,6 +41,10 @@ const Series = () => {
   const [anadirSerie, setAnadirSerie] = useState<SeriesAPI>();
 
   const handleSelectSerie = (s: SeriesAPI) => {
+    setAnadirSerie(s);
+  };
+
+  const handleIrASerie = (s: SeriesAPI) => {
     setAnadirSerie(s);
   };
 
@@ -92,6 +98,7 @@ const Series = () => {
           </div>
         </div>
       </nav>
+
       {series?.map((s, index) => (
         <InfoSerie
           key={index}

@@ -4,8 +4,10 @@ import Series from "./pages/Series";
 import Facturas from "./pages/Facturas";
 import Layout from "./pages/Layout";
 import NotFound from "./pages/NotFound";
+import Serie from "./pages/Serie";
 
 function App() {
+  const idSerie = 0;
   return (
     <BrowserRouter>
       <Routes>
@@ -14,6 +16,7 @@ function App() {
           <Route path="series" element={<Series />} />
           <Route path="facturas" element={<Facturas />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="series/:id" element={<Serie />} />
         </Route>
       </Routes>
     </BrowserRouter>

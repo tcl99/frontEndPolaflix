@@ -23,9 +23,14 @@ const SeriesInicio = ({ series, children }: Props) => {
         >
           {series?.length ? (
             series.map((item, index) => (
-              <li key={index} className="list-group-item">
+              <a
+                style={{ cursor: "pointer" }}
+                key={index}
+                className="list-group-item"
+                href={"series/" + item.id}
+              >
                 {item.info.titulo}
-              </li>
+              </a>
             ))
           ) : (
             <li className="list-group-item">
