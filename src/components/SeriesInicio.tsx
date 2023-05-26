@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { SeriesAPI } from "../api/SeriesAPI";
+import { useState } from "react";
 
 interface Props {
   series?: SeriesAPI[];
@@ -23,14 +25,15 @@ const SeriesInicio = ({ series, children }: Props) => {
         >
           {series?.length ? (
             series.map((item, index) => (
-              <a
-                style={{ cursor: "pointer" }}
+              <Link
                 key={index}
+                style={{ cursor: "pointer" }}
                 className="list-group-item"
-                href={"series/" + item.id}
+                to={"series/" + item.info.titulo} // ?id=${item.id}`
+                state={{ serie: item }}
               >
                 {item.info.titulo}
-              </a>
+              </Link>
             ))
           ) : (
             <li className="list-group-item">

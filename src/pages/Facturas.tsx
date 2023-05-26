@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import TablaFacturas from "../components/TablaFacturas";
 import { FacturasAPI } from "../api/FacturasAPI";
 import { getFacturas } from "../api/getFacturasUsuario";
 import { format, parseISO } from "date-fns";
 import { YearMonth } from "js-joda";
+import { Link } from "react-router-dom";
 
 const Facturas = () => {
   const [factura, setFactura] = useState<FacturasAPI>();
@@ -27,30 +28,39 @@ const Facturas = () => {
     setFecha(fecha.plusMonths(1));
   };
 
+  const calendarioMes = (input: ChangeEvent<HTMLInputElement>) => {
+    setFactura(undefined);
+    let fecha = input.target.valueAsDate;
+    setFecha(YearMonth.parse(format(fecha ? fecha : 0, "yyyy-MM")));
+  };
+
   return (
     <>
       <ul className="nav justify-content-center">
         <li className="nav-link">
-          <a href="#" aria-label="Previous" onClick={retrocederMes}>
+          <Link to="#" aria-label="Previous" onClick={retrocederMes} replace>
             <span aria-hidden="true">&laquo;</span>
-          </a>
+          </Link>
         </li>
         <li className="nav-item">
           <h1>Fecha {fecha.toString()}</h1>
         </li>
         <li className="nav-link">
-          <a href="#" aria-label="Next" onClick={avanzarMes}>
+          <Link to="#" aria-label="Next" onClick={avanzarMes} replace>
             <span aria-hidden="true">&raquo;</span>
-          </a>
+          </Link>
         </li>
       </ul>
 
-      <input
-        className="justify-content-center"
-        type="month"
-        id="fecha"
-        name="fecha"
-      ></input>
+      <div style={{ display: "flex", justifyContent: "center", margin: 10 }}>
+        <input
+          type="month"
+          id="fecha"
+          name="fecha"
+          onChange={calendarioMes}
+          value={fecha.toString()}
+        ></input>
+      </div>
 
       <TablaFacturas
         importes={factura?.importes}
