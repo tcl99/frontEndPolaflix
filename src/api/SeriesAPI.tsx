@@ -1,5 +1,5 @@
 export interface SeriesAPI {
-  id: number;
+  idSerie: number;
   temporadas: Temporadas[];
   info: InfoSerie;
 }
@@ -12,7 +12,7 @@ interface InfoSerie {
   creadores: string[];
   actores: string[];
 }
-interface Temporadas {
+export interface Temporadas {
   numero: number;
   capitulos: Capitulos[];
 }
