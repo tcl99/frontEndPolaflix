@@ -1,4 +1,4 @@
-import { FacturasAPI } from "../api/Cliente";
+import { FacturasAPI } from "../api/FacturasAPI";
 
 const TablaFacturas = ({ importes, importeMensual }: FacturasAPI) => {
   return (

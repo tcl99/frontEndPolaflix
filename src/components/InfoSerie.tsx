@@ -50,6 +50,12 @@ const InfoSerie = ({ serie, onSelectSerie }: Props) => {
           }}
         >
           {serie.info.descripcion}
+          <br />
+          Creadores:
+          {" " + serie.info.creadores}
+          <br />
+          Actores:
+          {" " + serie.info.actores}
         </Alert>
       )}
     </>
