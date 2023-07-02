@@ -9,7 +9,7 @@ const Inicio = () => {
   useEffect(() => {
     // <Loading/>
     console.log("Loading");
-    getInfoSeries().then((data) => setSeries(data));
+    getInfoSeries(globalThis.usuario).then((data) => setSeries(data));
   }, []);
 
   return (

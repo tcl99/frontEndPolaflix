@@ -1,19 +1,25 @@
 import Inicio from "./pages/Inicio";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Series from "./pages/Series";
 import Facturas from "./pages/Facturas";
 import Layout from "./pages/Layout";
 import NotFound from "./pages/NotFound";
+import { useEffect } from "react";
+
+declare global {
+  var usuario: String;
+}
 
 function App() {
-  const idSerie = 0;
+  globalThis.usuario = "socio";
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Inicio />} />
+          <Route path="usuarios/:usuario" element={<Inicio />} />
           <Route path="series/:inicial?" element={<Series />} />
-          <Route path="facturas" element={<Facturas />} />
+          <Route path="usuarios/:usuario/facturas" element={<Facturas />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

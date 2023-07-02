@@ -14,7 +14,7 @@ const Serie = () => {
     <>
       <div>
         <h1>{serie.info.titulo}</h1>
-        <Temporada t={serie.temporadas[0]}></Temporada>
+        <Temporada t={serie.temporadas[0]} s={serie.info}></Temporada>
       </div>
     </>
   );

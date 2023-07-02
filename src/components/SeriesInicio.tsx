@@ -29,7 +29,7 @@ const SeriesInicio = ({ series, children }: Props) => {
                 key={index}
                 style={{ cursor: "pointer" }}
                 className="list-group-item"
-                to={"series/" + item.info.titulo} // ?id=${item.id}`
+                to={"/series/" + item.info.titulo} // ?id=${item.id}`
                 state={{ serie: item }}
               >
                 {item.info.titulo}

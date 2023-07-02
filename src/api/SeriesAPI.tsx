@@ -1,10 +1,10 @@
 export interface SeriesAPI {
   idSerie: number;
-  temporadas: Temporadas[];
   info: InfoSerie;
+  temporadas: Temporadas[];
 }
 
-interface InfoSerie {
+export interface InfoSerie {
   categoria: "ESTANDAR" | "SILVER" | "GOLD";
   titulo: string;
   genero: string;
@@ -13,11 +13,13 @@ interface InfoSerie {
   actores: string[];
 }
 export interface Temporadas {
+  idTemporada: number;
   numero: number;
   capitulos: Capitulos[];
 }
 
-interface Capitulos {
+export interface Capitulos {
+  idCapitulo: number;
   numero: number;
   titulo: string;
   descripcion: string;

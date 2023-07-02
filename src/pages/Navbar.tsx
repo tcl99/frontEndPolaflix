@@ -9,7 +9,12 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <strong>
-                <Link className="nav-link" aria-current="page" to="/" replace>
+                <Link
+                  className="nav-link"
+                  aria-current="page"
+                  to={"/usuarios/" + globalThis.usuario}
+                  replace
+                >
                   Inicio
                 </Link>
               </strong>
@@ -19,7 +24,7 @@ const Navbar = () => {
                 <Link
                   className="nav-link"
                   aria-current="page"
-                  to="/series/A"
+                  to={"/series/A"}
                   replace
                 >
                   Agregar Serie
@@ -31,7 +36,7 @@ const Navbar = () => {
                 <Link
                   className="nav-link"
                   aria-current="page"
-                  to="facturas"
+                  to={"/usuarios/" + globalThis.usuario + "/facturas"}
                   replace
                 >
                   Ver Cargos

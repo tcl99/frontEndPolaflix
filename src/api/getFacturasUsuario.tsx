@@ -7,14 +7,14 @@ interface Props {
 }
 
 export const getFacturas = async ({ fecha }: Props): Promise<FacturasAPI> => {
-  let user = "socio";
-
-  const { data } = await client.get<FacturasAPI>("facturas", {
-    params: {
-      usuario: user,
-      fecha: fecha,
-    },
-  });
+  const { data } = await client.get<FacturasAPI>(
+    "usuarios/" + globalThis.usuario + "/facturas",
+    {
+      params: {
+        fecha: fecha,
+      },
+    }
+  );
 
   return data;
 };
