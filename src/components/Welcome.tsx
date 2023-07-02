@@ -25,7 +25,7 @@ const Welcome = () => {
           </a>
           <h2 className="col-auto">Polaflix</h2>
         </span>
-        <h1 className="col-7">Bienvenido Socio</h1>
+        <h1 className="col-7">{"Bienvenido " + globalThis.usuario}</h1>
       </div>
 
       <hr />
