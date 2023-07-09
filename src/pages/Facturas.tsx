@@ -39,7 +39,12 @@ const Facturas = () => {
       <ul className="nav justify-content-center">
         <li className="nav-link">
           <Link to="#" aria-label="Previous" onClick={retrocederMes} replace>
-            <span aria-hidden="true">&laquo;</span>
+            <span
+              aria-hidden="true"
+              style={{ userSelect: "none", fontSize: 50 }}
+            >
+              &laquo;
+            </span>
           </Link>
         </li>
         <li className="nav-item">
@@ -47,7 +52,12 @@ const Facturas = () => {
         </li>
         <li className="nav-link">
           <Link to="#" aria-label="Next" onClick={avanzarMes} replace>
-            <span aria-hidden="true">&raquo;</span>
+            <span
+              aria-hidden="true"
+              style={{ userSelect: "none", fontSize: 50 }}
+            >
+              &raquo;
+            </span>
           </Link>
         </li>
       </ul>
